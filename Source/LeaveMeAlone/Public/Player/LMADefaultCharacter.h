@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "LMADefaultCharacter.generated.h"
 
 
@@ -38,6 +39,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cursor")
 	FVector CursorSize = FVector(20.0f, 40.0f, 40.0f);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sprint")
+	float Stamina = 100.0f;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -57,6 +61,11 @@ private:
 	void ZoomIn();
 	void ZoomOut();
 
+	bool IsSprint;
+	float MaxStamina = 100.0f;
+	float SprintStamina = 20.0f;
+	float StaminaRecovery = 20.0f;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
 	float ZoomSpeed = 100.0f;
 
@@ -68,4 +77,9 @@ private:
 
 	float CurrentZoomDistance = 500.0f;
 
+	UFUNCTION(BlueprintCallable)
+	void StartSprint();
+
+	UFUNCTION(BlueprintCallable)
+	void StopSprint();
 };
