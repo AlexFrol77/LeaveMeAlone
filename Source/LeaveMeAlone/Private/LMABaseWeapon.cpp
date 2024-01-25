@@ -83,9 +83,8 @@ void ALMABaseWeapon::Shoot()
 void ALMABaseWeapon::DecrementBullets()
 {
 	CurrentAmmoWeapon.Bullets--;
-	UE_LOG(LogWeapon, Display, TEXT("Bullets = %s"), *FString::FromInt(CurrentAmmoWeapon.Bullets));
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Black, 
-		*FString::FromInt(CurrentAmmoWeapon.Bullets), true, FVector2D(2.0f, 2.0f));
+	//UE_LOG(LogWeapon, Display, TEXT("Bullets = %s"), *FString::FromInt(CurrentAmmoWeapon.Bullets));
+
 	if (IsCurrentClipEmpty())
 	{
 		ReloadDelegate.Broadcast();
@@ -118,6 +117,10 @@ bool ALMABaseWeapon::GetAmmoBullets()
 	{
 		return false;
 	}
-	
 	return true;
+}
+
+void ALMABaseWeapon::SetFullAmmo() 
+{
+	CurrentAmmoWeapon = AmmoWeapon;
 }

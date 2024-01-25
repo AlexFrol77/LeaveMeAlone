@@ -99,7 +99,7 @@ private:
 
 	void OnDeath();
 
-	void OnHealthChanged(float NewHealth);
+	//void OnHealthChanged(float NewHealth);
 
 	void RotationPlayerOnCursor();
 };

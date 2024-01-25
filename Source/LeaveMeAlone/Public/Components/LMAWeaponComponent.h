@@ -26,6 +26,9 @@ public:
 	void StopFire();
 	void Reload();
 
+	UFUNCTION(BlueprintCallable)
+	bool GetCurrentWeaponAmmo(FAmmoWeapon& AmmoWeapon);
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -35,6 +38,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	UAnimMontage* ReloadMontage;
+
+	UFUNCTION(BlueprintCallable)
+	void SetFullAmmo();
 
 private:
 

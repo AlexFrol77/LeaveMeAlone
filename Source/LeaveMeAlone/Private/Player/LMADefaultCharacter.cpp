@@ -50,9 +50,9 @@ void ALMADefaultCharacter::BeginPlay()
 	}
 	CurrentZoomDistance = (MinZoomDistance + MaxZoomDistance) / 2.0f;
 
-	OnHealthChanged(HealthComponent->GetHealth());
+	//OnHealthChanged(HealthComponent->GetHealth());
 	HealthComponent->OnDeath.AddUObject(this, &ALMADefaultCharacter::OnDeath);
-	HealthComponent->OnHealthChanged.AddUObject(this, &ALMADefaultCharacter::OnHealthChanged);
+	//HealthComponent->OnHealthChanged.AddUObject(this, &ALMADefaultCharacter::OnHealthChanged);
 }
 
 void ALMADefaultCharacter::Tick(float DeltaTime)
@@ -173,10 +173,10 @@ void ALMADefaultCharacter::Zoom(float Value)
 	}
 }
 
-void ALMADefaultCharacter::OnHealthChanged(float NewHealth)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("Health = %f"), NewHealth));
-}
+//void ALMADefaultCharacter::OnHealthChanged(float NewHealth)
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("Health = %f"), NewHealth));
+//}
 
 void ALMADefaultCharacter::OnDeath()
 {

@@ -103,3 +103,19 @@ void ULMAWeaponComponent::Reload()
 		}
 	}
 }
+
+bool ULMAWeaponComponent::GetCurrentWeaponAmmo(FAmmoWeapon& AmmoWeapon)
+{
+	if (Weapon)
+	{
+		AmmoWeapon = Weapon->GetCurrentAmmoWeapon();
+		
+		return true;
+	}
+	return false;
+}
+
+void ULMAWeaponComponent::SetFullAmmo() 
+{
+	Weapon->SetFullAmmo();
+}

@@ -44,9 +44,13 @@ public:
 
 	bool GetAmmoBullets();
 
+	void SetFullAmmo();
+
 	FReload ReloadDelegate;
 
 	FEmptyAmmoClips EmptyAmmoClipsDelegate;
+
+	FAmmoWeapon GetCurrentAmmoWeapon() const { return CurrentAmmoWeapon; }
 
 protected:
 

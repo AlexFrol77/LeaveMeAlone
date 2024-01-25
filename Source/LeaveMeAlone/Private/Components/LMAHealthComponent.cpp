@@ -8,8 +8,6 @@ ULMAHealthComponent::ULMAHealthComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-
-// Called when the game starts
 void ULMAHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
@@ -25,7 +23,6 @@ void ULMAHealthComponent::BeginPlay()
 	}
 }
 	
-// Called every frame
 void ULMAHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
@@ -67,4 +64,14 @@ bool ULMAHealthComponent::AddHealth(float NewHealth)
 bool ULMAHealthComponent::IsHealthFull() const
 {
 	return FMath::IsNearlyEqual(Health, MaxHealth);
+}
+
+void ULMAHealthComponent::SetHealthFull() {
+	AddFullHealth();
+}
+
+void ULMAHealthComponent::AddFullHealth()
+{
+	Health = 100.0f;
+	OnHealthChanged.Broadcast(Health);
 }

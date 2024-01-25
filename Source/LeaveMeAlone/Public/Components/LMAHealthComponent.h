@@ -15,7 +15,7 @@ class LEAVEMEALONE_API ULMAHealthComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
+
 	ULMAHealthComponent();
 
 	UFUNCTION(BlueprintCallable)
@@ -28,23 +28,29 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsDead() const;
 
+	UFUNCTION(BlueprintCallable)
+	void SetHealthFull();
+
+	void AddFullHealth();
+
 	bool AddHealth(float NewHealth);
 	bool IsHealthFull() const;
 
 protected:
-	// Called when the game starts
+
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float MaxHealth = 100.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Health = 0.0f;
+
 public:	
-	// Called every frame
+
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-
-	float Health = 0.0f;
 
 	UFUNCTION()
 	void OnTakeAnyDamage(AActor* DamagedActor, float Damage, 
